@@ -1,0 +1,7 @@
+configs/.env*
+
+*.exe
+*.out
+*.so
+
+vendor/
