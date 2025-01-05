@@ -5,3 +5,5 @@ configs/.env*
 *.so
 
 vendor/
+
+tmp/

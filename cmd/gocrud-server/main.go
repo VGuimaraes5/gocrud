@@ -43,6 +43,29 @@ func main() {
 					"users": users,
 				})
 			})
+
+			v1.POST("/user", func(ctx *gin.Context) {
+				db := db.GetConnection()
+				user := model.User{}
+
+				if err := ctx.ShouldBindJSON(&user); err != nil {
+					ctx.JSON(http.StatusBadRequest, gin.H{
+						"message": "invalid request",
+					})
+					return
+				}
+
+				if err := db.Create(&user).Error; err != nil {
+					ctx.JSON(http.StatusInternalServerError, gin.H{
+						"message": "error creating user",
+					})
+					return
+				}
+
+				ctx.JSON(http.StatusCreated, gin.H{
+					"user": user,
+				})
+			})
 		}
 	}
 

@@ -20,7 +20,7 @@ func Init() error {
 
 	err = db.AutoMigrate(&model.User{})
 	if err != nil {
-		println("sqlite automigration error: %v", err)
+		println("Automigration error: %v", err)
 		return err
 	}
 
